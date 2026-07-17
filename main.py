@@ -22,7 +22,7 @@ while True:
         break
 
     for i in responses:
-        if user_message in i:
-            print(responses[user_message])
+        if i in user_message:
+            print(responses[i])
         else:
             print("این را هنوز بلد نیستم")
