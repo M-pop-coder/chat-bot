@@ -11,21 +11,25 @@ print("🤖 سلام! من چت‌ بات تو هستم.")
 print("رابنویس exit برای خروج\n")
 
 while True:
-    user_message = input("👤 شما: ")
+    user_message = input("👤 شما: ").strip().lower()
+
+    user_message = user_message.replace("؟", "")
+    user_message = user_message.replace("!", "")
+    user_message = user_message.replace(".", "")
 
     # EIXIT LOOP
-    if user_message.lower().strip() == "exit":
+    if user_message == "exit":
         print("🤖 خداحافظ!")
         break
-    elif user_message.strip() == "خداحافظ":
+    elif user_message == "خداحافظ":
         print("سلام من رو به مادرت ابلاغ کن")
         break
 
     found = False
 
-    for i in responses:
-        if i in user_message:
-            print(responses[i])
+    for keyword, answer in responses.items():
+        if keyword in user_message:
+            print("🤖", answer)
             found = True
             break
         
