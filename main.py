@@ -21,9 +21,13 @@ while True:
         print("سلام من رو به مادرت ابلاغ کن")
         break
 
+    found = False
+
     for i in responses:
         if i in user_message:
             print(responses[i])
+            found = True
             break
-        else:
-            print("این را هنوز بلد نیستم")
+        
+    if not found:
+        print("این را هنوز بلد نیستم")
