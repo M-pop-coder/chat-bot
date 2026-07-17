@@ -21,7 +21,8 @@ while True:
         print("سلام من رو به مادرت ابلاغ کن")
         break
 
-    if user_message in responses:
-        print(responses[user_message])
-    else:
-        print("این را هنوز بلد نیستم")
+    for i in responses:
+        if user_message in i:
+            print(responses[user_message])
+        else:
+            print("این را هنوز بلد نیستم")
