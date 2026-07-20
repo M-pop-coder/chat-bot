@@ -29,7 +29,7 @@ while True:
 
     if user_message == "history":
         for word in history:
-            print(history)
+            print("📜 تاریخچه گفتگو:", word)
     else:
         history.append(user_message)
 
