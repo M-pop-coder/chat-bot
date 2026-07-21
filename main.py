@@ -1,29 +1,10 @@
 from responses import responses
+from memory import show_history
+from ui import welcome
 from chatbot import get_answer
 
-def welcome():
-    print("🤖 سلام! من چت‌بات تو هستم.")
-    print("برای خروج exit را بنویس.\n")
-
-
-def show_history(history):
-
-    if not history:
-        print("📜 هنوز تاریخچه‌ای وجود ندارد.")
-        return
-
-    print("\n📜 تاریخچه گفتگو:\n")
-
-    for message in history:
-
-        if message["role"] == "user":
-            print(f"👤, {message['content']}\n")
-
-        else:
-            print(f"🤖, {message['content']}\n")
-
-
 welcome()
+
 
 history = []
 
