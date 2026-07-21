@@ -9,7 +9,7 @@ def show_history(history):
     for message in history:
 
         if message["role"] == "user":
-            print(f'👤 {message["content"]}')
+            print(f'👤 {message["content"]}\n')
 
         else:
-            print(f'🤖 {message["content"]}')
+            print(f'🤖 {message["content"]}\n')
