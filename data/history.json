@@ -18,5 +18,13 @@
     {
         "role": "user",
         "content": "سلام"
+    },
+    {
+        "role": "user",
+        "content": "سلام"
+    },
+    {
+        "role": "bot",
+        "content": "این را هنوز بلد نیستم"
     }
 ]
