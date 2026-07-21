@@ -1,3 +1,35 @@
+def welcome():
+    print("🤖 سلام! من چت‌بات تو هستم.")
+    print("برای خروج exit را بنویس.\n")
+
+
+def show_history(history):
+
+    if not history:
+        print("📜 هنوز تاریخچه‌ای وجود ندارد.")
+        return
+
+    print("\n📜 تاریخچه گفتگو:\n")
+
+    for message in history:
+
+        if message["role"] == "user":
+            print(f"👤, {message["content"]}\n")
+
+        else:
+            print(f"🤖, {message["content"]}\n")
+
+
+def get_answer(user_message, responses):
+
+    for keyword, answer in responses.items():
+
+        if keyword in user_message:
+            return answer
+
+    return None
+
+
 responses = {
     "سلام": "سلام! خوش اومدی",
     "خوبی": "من عالی‌ام، ممنون.",
@@ -7,8 +39,7 @@ responses = {
 }
 
 
-print("🤖 سلام! من چت‌ بات تو هستم.")
-print("رابنویس exit برای خروج\n")
+welcome()
 
 history = []
 
@@ -23,28 +54,21 @@ while True:
         print("🤖سلام من رو به مادرت ابلاغ کن")
         break
 
+    # PRINT HISTORY
     if user_message == "history":
-        if not history:
-            print("📜 تاریخچه گفتگووجود ندارد:")
-        for message in history:
-            print(f'{message["role"]}: {message["content"]}')
+        show_history(history)
         continue
     else:
         history.append({"role": "user", "content": user_message})
 
-    found = False
+    answer = get_answer(user_message, responses)
 
-    for keyword, answer in responses.items():
-        if keyword in user_message:
-            print("🤖", answer)
-            found = True
-            history.append({"role": "assistant", "content": answer})
-            break
+    if answer:
+        print("🤖", answer)
+        history.append({"role": "assistant", "content": answer})
+        continue
 
-    if not found:
+    else:
         answer = "این را هنوز بلد نیستم"
         print("🤖", answer)
-        history.append({
-            "role": "assistant",
-            "content": answer
-        })
+        history.append({"role": "assistant", "content": answer})
