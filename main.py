@@ -1,7 +1,12 @@
 from responses import responses
-from memory import show_history, save_history, load_history
 from ui import welcome
 from chatbot import get_answer
+from normalize import normalizer
+from memory import (
+    show_history,
+    save_history,
+    load_history
+)
 import json
 
 
@@ -13,7 +18,10 @@ welcome()
 history = load_history()
 
 while True:
-    user_message = input("👤 شما: ").strip().lower()
+    user_message = normalizer(input("👤 شما: "))
+
+    # APPEND HISTORY (USER)
+    history.append({"role": "user", "content": user_message})
 
     # EIXIT LOOP
     if user_message == "exit":
@@ -36,8 +44,7 @@ while True:
         answer = "این را هنوز بلد نیستم"
         print("🤖", answer)
 
-
-    history.append({"role": "user", "content": user_message})
+    # APPEND HISTORY (BOT)
     history.append({"role": "bot", "content": answer})
     save_history(history)
 
