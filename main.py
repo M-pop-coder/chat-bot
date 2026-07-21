@@ -47,11 +47,12 @@ while True:
 
     if answer:
         print("🤖", answer)
-        history.append({"role": "bot", "content": answer})
-        save_history(history)
     else:
         answer = "این را هنوز بلد نیستم"
         print("🤖", answer)
-        history.append({"role": "bot", "content": answer})
-        save_history(history)
+
+
+    history.append({"role": "user", "content": user_message})
+    history.append({"role": "bot", "content": answer})
+    save_history(history)
 
