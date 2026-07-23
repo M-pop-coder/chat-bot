@@ -50,3 +50,7 @@ class ChatBot:
             else:
                 print(f'\n🤖 {message["content"]}\n')
 
+
+    def add_massege(self, massege):
+        self.history.append(massege)      
+
