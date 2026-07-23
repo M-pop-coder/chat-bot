@@ -40,5 +40,5 @@ while True:
 
     # APPEND HISTORY (BOT)
     bot.history.append({"role": "bot", "content": answer})
-    bot.save_history(history)
+    bot.save_history()
 
