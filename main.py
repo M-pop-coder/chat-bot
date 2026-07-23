@@ -2,7 +2,6 @@ from responses import responses
 from ui import welcome
 from chatbot import ChatBot
 from normalize import normalizer
-import json
 
 bot = ChatBot()
 
@@ -29,7 +28,7 @@ while True:
     else:
         # APPEND HISTORY (USER)
         # برای اینکه خود کلمه ی history ذخیره نشود
-        bot.add_massege({"role": "user", "content": user_message})
+        bot.add_message({"role": "user", "content": user_message})
 
     answer = bot.get_answer(user_message, responses)
 
@@ -40,6 +39,6 @@ while True:
         print("🤖", answer)
 
     # APPEND HISTORY (BOT)
-    bot.add_massege({"role": "bot", "content": answer})
+    bot.add_message({"role": "assistant", "content": answer})
     bot.save_history()
 
