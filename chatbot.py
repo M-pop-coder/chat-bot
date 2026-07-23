@@ -51,6 +51,11 @@ class ChatBot:
                 print(f'\n🤖 {message["content"]}\n')
 
 
-    def add_message(self, massege):
-        self.history.append(massege)      
+    def add_user_message(self, message):
+        self.history.append({"role": "user", "content": message})
+
+
+    def add_assistant_message(self, message):
+        self.history.append({"role": "assistant", "content": message})
+
 
