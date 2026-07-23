@@ -15,7 +15,7 @@ class ChatBot:
         return None
     
     
-    def save_history(self,):
+    def save_history(self):
 
         with open("data/history.json", "w", encoding="utf-8") as file:
             json.dump(
@@ -32,7 +32,7 @@ class ChatBot:
             return json.load(file)
 
 
-    def show_history(self, history):
+    def show_history(self):
 
         if not self.history:
             print("📜 هنوز تاریخچه‌ای وجود ندارد.")
@@ -40,7 +40,7 @@ class ChatBot:
 
         print("\n📜 تاریخچه گفتگو:\n")
 
-        for message in history:
+        for message in self.history:
 
             if message["role"] == "user":
                 print(f'👤 {message["content"]}')
