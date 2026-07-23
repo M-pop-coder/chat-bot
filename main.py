@@ -14,9 +14,6 @@ welcome()
 while True:
     user_message = normalizer(input("👤 شما: "))
 
-    # APPEND HISTORY (USER)
-    bot.history.append({"role": "user", "content": user_message})
-
     # EIXIT LOOP
     if user_message == "exit":
         print("🤖 خداحافظ!")
@@ -29,6 +26,10 @@ while True:
     if user_message == "history":
         bot.show_history()
         continue
+    else:
+        # APPEND HISTORY (USER)
+        # برای اینکه خود کلمه ی history ذخیره نشود
+        bot.add_massege({"role": "user", "content": user_message})
 
     answer = bot.get_answer(user_message, responses)
 
@@ -39,6 +40,6 @@ while True:
         print("🤖", answer)
 
     # APPEND HISTORY (BOT)
-    bot.history.append({"role": "bot", "content": answer})
+    bot.add_massege({"role": "bot", "content": answer})
     bot.save_history()
 
