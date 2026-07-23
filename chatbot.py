@@ -15,6 +15,8 @@ class ChatBot:
         return None
     
     
+    # HISTORY
+
     def save_history(self):
 
         with open("data/history.json", "w", encoding="utf-8") as file:
