@@ -1,8 +1,50 @@
-def get_answer(user_message, responses):
+import json
 
-    for keyword, answer in responses.items():
+class ChatBot:
+    def __init__(self):
+        self.history = []
 
-        if keyword in user_message:
-            return answer
 
-    return None
+    def get_answer(self, user_message, responses):
+
+        for keyword, answer in responses.items():
+
+            if keyword in user_message:
+                return answer
+
+        return None
+    
+    
+    def save_history(self,):
+
+        with open("data/history.json", "w", encoding="utf-8") as file:
+            json.dump(
+                self.history,
+                file,
+                ensure_ascii=False,
+                indent=4
+            )
+
+
+    def load_history(self):
+
+        with open("data/history.json", "r", encoding="utf-8") as file:
+            return json.load(file)
+
+
+    def show_history(self, history):
+
+        if not self.history:
+            print("📜 هنوز تاریخچه‌ای وجود ندارد.")
+            return
+
+        print("\n📜 تاریخچه گفتگو:\n")
+
+        for message in history:
+
+            if message["role"] == "user":
+                print(f'👤 {message["content"]}')
+
+            else:
+                print(f'\n🤖 {message["content"]}\n')
+
