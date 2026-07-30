@@ -2,7 +2,7 @@ import json
 
 class ChatBot:
     def __init__(self):
-        self.history = []
+        self._history = []
 
 
     def get_answer(self, user_message, responses):
@@ -21,7 +21,7 @@ class ChatBot:
 
         with open("data/history.json", "w", encoding="utf-8") as file:
             json.dump(
-                self.history,
+                self._history,
                 file,
                 ensure_ascii=False,
                 indent=4
@@ -36,13 +36,13 @@ class ChatBot:
 
     def show_history(self):
 
-        if not self.history:
+        if not self._history:
             print("📜 هنوز تاریخچه‌ای وجود ندارد.")
             return
 
         print("\n📜 تاریخچه گفتگو:\n")
 
-        for message in self.history:
+        for message in self._history:
 
             if message["role"] == "user":
                 print(f'👤 {message["content"]}')
@@ -52,10 +52,10 @@ class ChatBot:
 
 
     def add_user_message(self, message):
-        self.history.append({"role": "user", "content": message})
+        self._history.append({"role": "user", "content": message})
 
 
     def add_assistant_message(self, message):
-        self.history.append({"role": "assistant", "content": message})
+        self._history.append({"role": "assistant", "content": message})
 
 
